@@ -1,7 +1,7 @@
 # dj_chat
 **ChatApp** is a real-time messaging app using Django and Django Channels, offering seamless user interactions. Users can chat, create rooms, join groups, and authenticate securely.
 
-##Features:
+## Features:
 
 - Real-Time Messaging: Instant updates with WebSockets.
 - User Authentication: Secure login/logout.
