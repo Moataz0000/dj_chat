@@ -1,0 +1,34 @@
+<div class="message-container text-center">
+    {% if messages %}
+        {% for message in messages %}
+            <div id="message" class="x">
+                <div {% if message.tags %} class="alert bg-{{ message.tags }}-500 text-white p-4 rounded-lg" {% endif %} role="alert">
+                    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                        <div class="flex">
+                            <div class="py-1">
+                                <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1.6-7.6L6 9.2l-1.4 1.4L8.4 14l6-6-1.4-1.4-4.6 4.6z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold">{{ message }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<!-- Include jQuery first -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('.x').fadeOut('slow');
+        }, 3000); // 3 seconds delay before fading out the message
+    });
+</script>

@@ -1,0 +1,31 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Rooms | Chat{% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center bg-gray-800"><br>
+    <h1 class="text-3xl lg:text-6xl text-white font-bold">Rooms</h1> <br><h3 style="color: white;">Welcome, <b>{{request.user.username}}  </b></h3>
+    <div class="flex flex-wrap gap-8 justify-center">
+
+        {% include 'includes/alerts.html' %}
+    </div>
+</div>
+<div class="p-6 lg:p-12">
+
+    <div class="flex flex-wrap gap-6 justify-center">
+        {% for room in rooms %}
+        <div class="w-full lg:w-1/4 md:w-1/2 p-3">
+            <div class="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"> <!-- Adjusted shadow intensity -->
+                <div class="p-6 text-center">
+                    <h2 class="text-2xl font-semibold text-gray-900">{{ room.name }}</h2>
+                    <p class="mt-2 text-gray-600 text-sm">Created on: {{ room.created_at|date:"F j, Y" }}</p> <!-- Display creation date -->
+                    <a href="{{room.get_room_url}}" class="mt-4 inline-block px-5 py-3 rounded-lg text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Join
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}Djnago Chat{% endblock %}</title>   
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+   .chat-messsages {
+    height: 400px;
+    overflow-y: auto;
+   }
+    </style>
+
+</head>
+<body class="bg-gray-800">
+    {% include 'includes/navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block scripts %} {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Sign-up | Chat{% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center"><br><br>
+    <h1 class="text-3xl lg:text-6xl text-white">Sign Up</h1>
+</div>
+
+<form method="post" action="{% url 'sign_up' %}" class="lg:w-1/4 px-4 mx-auto">
+    {% csrf_token %}
+    
+    <!-- Email Field
+    <div class="mb-5">
+        <label for="email" class="block text-white text-sm font-medium">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="Enter your E-mail" 
+               value="{{ form.email.value|default:'' }}" 
+               class="w-full mt-2 px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900 focus:border-teal-500 focus:ring-teal-500">
+        {% if form.email.errors %}
+            <div class="text-red-600 text-sm mt-1">
+                {% for error in form.email.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div> -->
+
+    <!-- Username Field -->
+    <div class="mb-5">
+        <label for="username" class="block text-white text-sm font-medium">User Name</label>
+        <input type="text" name="username" id="username" placeholder="Enter your username" 
+               value="{{ form.username.value|default:'' }}" 
+               class="w-full mt-2 px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900 focus:border-teal-500 focus:ring-teal-500">
+        {% if form.username.errors %}
+            <div class="text-red-600 text-sm mt-1">
+                {% for error in form.username.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-5">
+        <label for="password1" class="block text-white text-sm font-medium">Password</label>
+        <input type="password" name="password1" id="password1" placeholder="Enter your password" 
+               class="w-full mt-2 px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900 focus:border-teal-500 focus:ring-teal-500">
+        {% if form.password1.errors %}
+            <div class="text-red-600 text-sm mt-1">
+                {% for error in form.password1.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Repeat Password Field -->
+    <div class="mb-5">
+        <label for="password2" class="block text-white text-sm font-medium">Repeat Password</label>
+        <input type="password" name="password2" id="password2" placeholder="Repeat your password" 
+               class="w-full mt-2 px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900 focus:border-teal-500 focus:ring-teal-500">
+        {% if form.password2.errors %}
+            <div class="text-red-600 text-sm mt-1">
+                {% for error in form.password2.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="px-5 py-3 rounded-xl text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
+        Sign-up
+    </button>
+
+    <p class="text-white mt-4">Already have an <a href="{% url 'login' %}" class="text-blue-400 hover:underline">account?</a></p>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Login | Chat{% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center"><br><br>
+    <h1 class="text-3xl lg:text-6xl text-white">Login</h1>
+</div>
+
+<form method="post" action="{% url 'login' %}" class="lg:w-1/4 px-4 mx-auto">
+    {% include 'includes/alerts.html' %}
+
+    {% csrf_token %}
+
+    <div class="mb-5">
+        <label for="username" class="block text-white text-sm font-medium">User Name</label>
+        <input type="text" name="username" id="username" placeholder="Enter your username" class="w-full mt-2 px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900 focus:border-teal-500 focus:ring-teal-500">
+    </div>
+
+    <div class="mb-5">
+        <label for="password" class="block text-white text-sm font-medium">Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter your password" class="w-full mt-2 px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900 focus:border-teal-500 focus:ring-teal-500">
+    </div>
+
+    {% if form.errors %}
+    <div id="error-messages" class="mb-5">
+        <!-- Non-field errors (e.g., general errors) -->
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div class="p-4 rounded-xl bg-red-600 text-white mb-2 text-sm">
+                    <p>{{ error }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Field-specific errors -->
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="p-4 rounded-xl bg-red-600 text-white mb-2 text-sm">
+                    <p>{{ error|escape }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <button type="submit" class="px-5 py-3 rounded-xl text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
+        Login 
+    </button>
+
+    <p class="text-white mt-4">Don't have an <a href="{% url 'sign_up' %}" class="text-blue-400 hover:underline">account?</a></p>
+</form>
+{% endblock %}
